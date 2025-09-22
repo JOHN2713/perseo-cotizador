@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cotizador Perseo</title>
+  <!-- Tailwind vía CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="/img/per-negro.png" alt="Perseo" class="h-12">
+      <h1 class="text-2xl font-bold">Cotizador Perseo</h1>
+    </div>
+    <span class="text-sm text-gray-500">v1.0</span>
+  </header>
+
+  <!-- Contenido -->
+  <main class="max-w-6xl mx-auto py-6 space-y-6">
+
+    <!-- Paso 1: Selección -->
+    <section class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-lg font-semibold mb-4">1) Selección del plan</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <label class="block text-sm mb-1">Producto</label>
+          <select id="product" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-indigo-500">
+            <option value="PC" selected>PC</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Plan</label>
+          <select id="planKey" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-indigo-500">
+            <option value="Comercial">Comercial</option>
+            <option value="Control">Control</option>
+            <option value="Facturacion">Facturación</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm mb-1">Servidores</label>
+            <input id="servers" type="number" min="1" value="1" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Estaciones</label>
+            <input id="stations" type="number" min="1" value="1" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-indigo-500">
+            <p class="text-xs text-gray-500 mt-1">≤10 = $210 | &gt;10 = $20 c/u</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Paso 2: Módulos -->
+    <section class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-lg font-semibold mb-4">2) Módulos adicionales</h2>
+      <div id="modules" class="grid md:grid-cols-3 gap-4">
+        <!-- Se llena dinámicamente desde JS -->
+      </div>
+    </section>
+
+    <!-- Paso 3: Cliente y Resumen -->
+    <section class="bg-white rounded-xl shadow p-6 space-y-4">
+      <h2 class="text-lg font-semibold">3) Datos del cliente y resumen</h2>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-sm mb-1">Asesor</label>
+          <input id="advisor" type="text" placeholder="Nombre del asesor" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-indigo-500">
+        </div>
+        <div>
+          <label class="block text-sm mb-1">RUC / Cédula</label>
+          <input id="idNumber" type="text" placeholder="########## o #############" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-indigo-500">
+          <p class="text-xs text-gray-500 mt-1">Validación local automática</p>
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Empresa</label>
+          <input id="company" type="text" placeholder="Razón social" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-indigo-500">
+        </div>
+      </div>
+
+      <!-- Resumen -->
+      <div id="summary" class="overflow-x-auto border rounded-lg"></div>
+
+      <!-- Botones -->
+      <div class="flex gap-3">
+        <button id="btnSave" class="px-5 py-2 rounded-lg bg-gray-800 text-white hover:bg-gray-900 transition">💾 Guardar</button>
+        <button id="btnPdf" class="px-5 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">⬇️ Exportar PDF</button>
+      </div>
+      <p class="text-xs text-gray-500">Términos y condiciones.</p>
+    </section>
+
+  </main>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
